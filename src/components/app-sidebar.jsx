@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, Bot, SquareTerminal } from "lucide-react";
+import { ScrollText, BookOpenText, FolderGit } from "lucide-react";
 
 import { Nav } from "@/components/nav";
 import { Sidebar, SidebarContent, SidebarRail } from "@/components/ui/sidebar";
@@ -11,7 +11,7 @@ const data = {
     {
       title: "Work Experience",
       url: "#",
-      icon: SquareTerminal,
+      icon: ScrollText,
       isActive: true,
       items: [
         {
@@ -31,7 +31,7 @@ const data = {
     {
       title: "Projects",
       url: "#",
-      icon: Bot,
+      icon: FolderGit,
       items: [
         {
           title: "Genesis",
@@ -50,7 +50,7 @@ const data = {
     {
       title: "Blogs",
       url: "#",
-      icon: BookOpen,
+      icon: BookOpenText,
       items: [
         {
           title: "Japan",

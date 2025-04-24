@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, House } from "lucide-react";
 
 import {
   Collapsible,
@@ -23,6 +23,14 @@ export function Nav({ items }) {
     <SidebarGroup>
       <SidebarGroupLabel>Navigation</SidebarGroupLabel>
       <SidebarMenu>
+        <SidebarMenuItem>
+          <a href="/">
+            <SidebarMenuButton>
+              <House size={32} absoluteStrokeWidth />
+              <span>Home - About Me</span>
+            </SidebarMenuButton>
+          </a>
+        </SidebarMenuItem>
         {items.map((item) => (
           <Collapsible
             key={item.title}
@@ -33,7 +41,7 @@ export function Nav({ items }) {
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton tooltip={item.title}>
-                  {item.icon && <item.icon />}
+                  {item.icon && <item.icon size={32} absoluteStrokeWidth />}
                   <span>{item.title}</span>
                   <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                 </SidebarMenuButton>
