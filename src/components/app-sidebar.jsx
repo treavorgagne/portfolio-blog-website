@@ -1,18 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import {
-  BookOpen,
-  Bot,
-  SquareTerminal,
-} from "lucide-react"
+import * as React from "react";
+import { BookOpen, Bot, SquareTerminal } from "lucide-react";
 
-import { Nav } from "@/components/nav"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarRail,
-} from "@/components/ui/sidebar"
+import { Nav } from "@/components/nav";
+import { Sidebar, SidebarContent, SidebarRail } from "@/components/ui/sidebar";
 
 const data = {
   items: [
@@ -63,15 +55,13 @@ const data = {
         {
           title: "Japan",
           url: "#",
-        }
+        },
       ],
     },
-  ]
-}
+  ],
+};
 
-export function AppSidebar({
-  ...props
-}) {
+export function AppSidebar({ ...props }) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarContent>
