@@ -1,14 +1,13 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { Geist, Geist_Mono } from "next/font/google";
+import { AppSidebar } from "@/components/app-sidebar";
+import { Header } from "@/components/header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+
+import { Ubuntu } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ubuntu = Ubuntu({
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -20,16 +19,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${ubuntu.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <Header />
+
+              <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+                <div className="grid auto-rows-min gap-4 md:grid-cols-3"></div>
+                <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+                  {children}
+                </div>
+              </div>
+            </SidebarInset>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
