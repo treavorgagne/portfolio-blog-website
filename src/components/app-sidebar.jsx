@@ -5,7 +5,6 @@ import { ScrollText, BookOpenText, FolderGit } from "lucide-react";
 
 import { Nav } from "@/components/nav";
 import { Sidebar, SidebarContent, SidebarRail } from "@/components/ui/sidebar";
-import { NavSecondary } from "./nav-secondary";
 
 const data = [
   {
@@ -64,7 +63,7 @@ export function AppSidebar({ ...props }) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarContent>
         <Nav items={data} />
-        <NavSecondary />
+        {/* <NavSecondary /> */}
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
