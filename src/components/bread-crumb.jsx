@@ -18,27 +18,35 @@ export default function DynamicBreadcrumb() {
     const href = "/" + segments.slice(0, i + 1).join("/");
     const label = decodeURIComponent(segment)
       .replace(/-/g, " ")
-      .replace(/\b\w/g, (l) => l.toUpperCase()); // "my-first-post" -> "My First Post"
+      .replace(/\b\w/g, (l) => l.toUpperCase());
 
     return (
-      <BreadcrumbItem key={href}>
-        <BreadcrumbLink asChild>
-          <Link href={href}>{label}</Link>
-        </BreadcrumbLink>
-        {i < segments.length - 1 && <BreadcrumbSeparator />}
-      </BreadcrumbItem>
+      <>
+        <BreadcrumbItem key={label} className="hidden sm:block">
+          {" "}
+          {/* Correct key usage here */}
+          <BreadcrumbLink asChild>
+            <Link href={href}>{label}</Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        {i < segments.length - 1 && (
+          <BreadcrumbSeparator className="hidden sm:block" />
+        )}
+      </>
     );
   });
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem className="hidden md:block">
+        <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link href="/">Treavor Gagne</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        {segments.length > 0 && <BreadcrumbSeparator className="hidden md:block" />}
+        {segments.length > 0 && (
+          <BreadcrumbSeparator className="hidden sm:block" />
+        )}
         {crumbs}
       </BreadcrumbList>
     </Breadcrumb>

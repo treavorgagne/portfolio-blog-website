@@ -53,7 +53,7 @@ export function Nav({ items }) {
   return (
     <>
       <SidebarGroup>
-        <SidebarGroupLabel >Navigation</SidebarGroupLabel>
+        <SidebarGroupLabel>Navigation</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton tooltip="About Me">
@@ -103,7 +103,7 @@ export function Nav({ items }) {
         </SidebarMenu>
       </SidebarGroup>
       <SidebarGroup className="mt-auto">
-        <SidebarGroupLabel >Social Links</SidebarGroupLabel>
+        <SidebarGroupLabel>Social Links</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
             {socials.map((item) => (

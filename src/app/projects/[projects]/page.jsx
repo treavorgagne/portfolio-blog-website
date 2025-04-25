@@ -16,8 +16,8 @@ const getPostContent = (slug) => {
   return { content, data };
 };
 
-export default function Project({ params }) {
-  const { projects } = params;
+export default async function Project({ params }) {
+  const { projects } = await params;
   const post = getPostContent(projects);
   if (!post) return notFound();
 
