@@ -4,11 +4,11 @@ import {
   ChevronRight,
   House,
   Github,
-  Link,
+  Link as LinkIcon,
   Mail,
   ScrollText,
 } from "lucide-react";
-
+import Link from "next/link";
 import {
   Collapsible,
   CollapsibleContent,
@@ -29,23 +29,27 @@ import {
 const socials = [
   {
     title: "Resume",
+    targetBlank: false,
     url: "/resume",
     icon: ScrollText,
   },
   {
     title: "GitHub",
-    url: "#",
+    targetBlank: true,
+    url: "https://github.com/treavorgagne",
     icon: Github,
   },
   {
     title: "Mail",
-    url: "#",
+    targetBlank: true,
+    url: "mailto:gagnetreavor@gmail.com",
     icon: Mail,
   },
   {
     title: "LinkedIn",
-    url: "#",
-    icon: Link,
+    targetBlank: true,
+    url: "https://www.linkedin.com/in/treavorgagne/",
+    icon: LinkIcon,
   },
 ];
 
@@ -109,10 +113,15 @@ export function Nav({ items }) {
             {socials.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild tooltip={item.title}>
-                  <a href={item.url}>
+                  <Link
+                    href={item.url}
+                    {...(item.targetBlank
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
                     <item.icon />
                     <span>{item.title}</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
