@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
@@ -21,8 +22,8 @@ export default function DynamicBreadcrumb() {
       .replace(/\b\w/g, (l) => l.toUpperCase());
 
     return (
-      <>
-        <BreadcrumbItem key={label} className="hidden sm:block">
+      <React.Fragment key={label}>
+        <BreadcrumbItem className="hidden sm:block">
           {" "}
           {/* Correct key usage here */}
           <BreadcrumbLink asChild>
@@ -32,7 +33,7 @@ export default function DynamicBreadcrumb() {
         {i < segments.length - 1 && (
           <BreadcrumbSeparator className="hidden sm:block" />
         )}
-      </>
+      </React.Fragment>
     );
   });
 

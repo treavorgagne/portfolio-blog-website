@@ -64,9 +64,7 @@ export function Nav({ items }) {
         <SidebarGroupLabel>Navigation</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild
-              tooltip="About Me"
-            >
+            <SidebarMenuButton asChild tooltip="About Me">
               <Link href="/">
                 <House />
                 <span>About Me</span>
@@ -76,14 +74,12 @@ export function Nav({ items }) {
           {items.map((item) => (
             <Collapsible key={item.title} asChild className="group/collapsible">
               <SidebarMenuItem>
-              <CollapsibleTrigger asChild>
+                <CollapsibleTrigger asChild>
                   <SidebarMenuButton tooltip={item.title}>
                     {item.icon && (
-                      <item.icon
-                        size={32}
-                        strokeWidth={3}
-                        absoluteStrokeWidth
-                      />
+                      <Link href={item.url}>
+                        <item.icon size={16} strokeWidth={2} />
+                      </Link>
                     )}
                     <span>{item.title}</span>
                     <ChevronRight
