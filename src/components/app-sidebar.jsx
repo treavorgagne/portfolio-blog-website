@@ -9,21 +9,40 @@ import { Sidebar, SidebarContent, SidebarRail } from "@/components/ui/sidebar";
 const data = [
   {
     title: "Work Experience",
-    url: "/experiences",
     icon: ScrollText,
-    items: [],
+    url: "/experiences",
+    items: [
+      {
+        title: "Overview",
+        url: "/experiences",
+      },
+    ],
   },
   {
     title: "Projects",
-    url: "/projects",
     icon: FolderGit,
-    items: [],
+    url: "/projects",
+    items: [
+      {
+        title: "Overview",
+        url: "/projects",
+      },
+      {
+        title: "Portfolio Website v1",
+        url: "/projects/portfolio-website",
+      },
+    ],
   },
   {
     title: "Blogs",
-    url: "/blogs",
     icon: BookOpenText,
-    items: [],
+    url: "/blogs",
+    items: [
+      {
+        title: "Overview",
+        url: "/blogs",
+      },
+    ],
   },
 ];
 

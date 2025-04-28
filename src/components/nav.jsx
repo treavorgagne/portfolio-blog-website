@@ -32,24 +32,28 @@ const socials = [
     targetBlank: false,
     url: "/resume",
     icon: ScrollText,
+    aria: "Checkout My Resume",
   },
   {
     title: "GitHub",
     targetBlank: true,
     url: "https://github.com/treavorgagne",
     icon: Github,
+    aria: "Visit my GitHub Profile",
   },
   {
     title: "Mail",
     targetBlank: true,
     url: "mailto:gagnetreavor@gmail.com",
     icon: Mail,
+    aria: "Send Me An Email",
   },
   {
     title: "LinkedIn",
     targetBlank: true,
     url: "https://www.linkedin.com/in/treavorgagne/",
     icon: LinkIcon,
+    aria: "Visit my LinkedIn Profile",
   },
 ];
 
@@ -60,17 +64,19 @@ export function Nav({ items }) {
         <SidebarGroupLabel>Navigation</SidebarGroupLabel>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip="About Me">
-              <House size={32} strokeWidth={3} absoluteStrokeWidth />
-              <a href="/">
+            <SidebarMenuButton asChild
+              tooltip="About Me"
+            >
+              <Link href="/">
+                <House />
                 <span>About Me</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           {items.map((item) => (
             <Collapsible key={item.title} asChild className="group/collapsible">
               <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
+              <CollapsibleTrigger asChild>
                   <SidebarMenuButton tooltip={item.title}>
                     {item.icon && (
                       <item.icon
@@ -93,9 +99,9 @@ export function Nav({ items }) {
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton asChild>
-                          <a href={`${item.url}/${subItem.url}`}>
+                          <Link href={`${subItem.url}`}>
                             <span>{subItem.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -115,6 +121,7 @@ export function Nav({ items }) {
                 <SidebarMenuButton asChild tooltip={item.title}>
                   <Link
                     href={item.url}
+                    aria-label={item.aria}
                     {...(item.targetBlank
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
