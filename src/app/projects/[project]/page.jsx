@@ -17,14 +17,14 @@ const getPostContent = (slug) => {
 };
 
 export default async function Project({ params }) {
-  const { projects } = await params;
-  const post = getPostContent(projects);
+  const { project } = await params;
+  const post = getPostContent(project);
   if (!post) return notFound();
 
   return (
-    <div className="prose prose-lg max-w-3xl mx-auto p-4">
+    <>
       <h1>{post.data.title}</h1>
       <article dangerouslySetInnerHTML={{ __html: marked(post.content) }} />
-    </div>
+    </>
   );
 }

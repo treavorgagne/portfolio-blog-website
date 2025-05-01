@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  ChevronRight,
-  House,
-  Github,
-  Link as LinkIcon,
-  Mail,
-  ScrollText,
-} from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronRight, House } from "lucide-react";
 import Link from "next/link";
 import {
   Collapsible,
@@ -25,39 +19,27 @@ import {
   SidebarMenuSubItem,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
+import { generateNavigationData, socials } from "@/content/data";
 
-const socials = [
-  {
-    title: "Resume",
-    targetBlank: false,
-    url: "/resume",
-    icon: ScrollText,
-    aria: "Checkout My Resume",
-  },
-  {
-    title: "GitHub",
-    targetBlank: true,
-    url: "https://github.com/treavorgagne",
-    icon: Github,
-    aria: "Visit my GitHub Profile",
-  },
-  {
-    title: "Mail",
-    targetBlank: true,
-    url: "mailto:gagnetreavor@gmail.com",
-    icon: Mail,
-    aria: "Send Me An Email",
-  },
-  {
-    title: "LinkedIn",
-    targetBlank: true,
-    url: "https://www.linkedin.com/in/treavorgagne/",
-    icon: LinkIcon,
-    aria: "Visit my LinkedIn Profile",
-  },
-];
+export function Nav() {
+  const [navData, setNavData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export function Nav({ items }) {
+  useEffect(() => {
+    async function loadNavData() {
+      try {
+        const data = await generateNavigationData();
+        setNavData(data);
+      } catch (error) {
+        console.error("Failed to load navigation data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadNavData();
+  }, []);
+
   return (
     <>
       <SidebarGroup>
@@ -71,43 +53,57 @@ export function Nav({ items }) {
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
-          {items.map((item) => (
-            <Collapsible key={item.title} asChild className="group/collapsible">
-              <SidebarMenuItem>
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton tooltip={item.title}>
-                    {item.icon && (
-                      <Link href={item.url}>
-                        <item.icon size={16} strokeWidth={2} />
-                      </Link>
-                    )}
-                    <span>{item.title}</span>
-                    <ChevronRight
-                      size={32}
-                      strokeWidth={3}
-                      absoluteStrokeWidth
-                      className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
-                    />
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <SidebarMenuSub>
-                    {item.items?.map((subItem) => (
-                      <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton asChild>
-                          <Link href={`${subItem.url}`}>
-                            <span>{subItem.title}</span>
-                          </Link>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-          ))}
+
+          {loading ? (
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <span>Loading navigation...</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ) : (
+            navData.map((item) => (
+              <Collapsible
+                key={item.title}
+                asChild
+                className="group/collapsible"
+              >
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton tooltip={item.title}>
+                      {item.icon && (
+                        <Link href={item.url}>
+                          <item.icon size={16} strokeWidth={2} />
+                        </Link>
+                      )}
+                      <span>{item.title}</span>
+                      <ChevronRight
+                        size={32}
+                        strokeWidth={3}
+                        absoluteStrokeWidth
+                        className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
+                      />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {item.items?.map((subItem) => (
+                        <SidebarMenuSubItem key={subItem.title}>
+                          <SidebarMenuSubButton asChild>
+                            <Link href={`${subItem.url}`}>
+                              <span>{subItem.title}</span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </Collapsible>
+            ))
+          )}
         </SidebarMenu>
       </SidebarGroup>
+
       <SidebarGroup className="mt-auto">
         <SidebarGroupLabel>Social Links</SidebarGroupLabel>
         <SidebarGroupContent>

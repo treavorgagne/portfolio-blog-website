@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "next-themes";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -13,7 +13,8 @@ const ubuntu = Ubuntu({
 
 export const metadata = {
   title: "Treavor Gagne Portfolio Blog Website",
-  description: "My personal website for showcasing my portfolio and blogs",
+  description:
+    "My personal website displaying my work experience, portfolio, and blog.",
 };
 
 export default function RootLayout({ children }) {
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
               <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3"></div>
                 <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
-                  {children}
+                  <div className="prose prose-lg mx-auto p-6">{children}</div>
                 </div>
               </div>
             </SidebarInset>
