@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import getPostContent from "@/content/getContentMD";
 import path from "path";
 const contentDir = path.join(process.cwd(), "src/content/blogs");
-import Markdown from "markdown-to-jsx";
 
 export default async function Blog({ params }) {
   const { blog } = await params;

@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "@/components/theme-provider";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import DynamicBreadcrumb from "@/components/bread-crumb";
 
 export function Header() {
@@ -9,6 +10,14 @@ export function Header() {
       <div className="flex items-center gap-2">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />
+        <Avatar className="w-10 h-10">
+          <AvatarImage
+            className="AvatarImage"
+            src="/HeadShotAnime.jpg"
+            alt="Treavor Gagne Headshot"
+          />
+          <AvatarFallback delayMs={600}>TG</AvatarFallback>
+        </Avatar>
         <DynamicBreadcrumb />
       </div>
 

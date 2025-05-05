@@ -49,7 +49,7 @@ export function Nav() {
             <SidebarMenuButton asChild tooltip="About Me">
               <Link href="/">
                 <House />
-                <span>About Me</span>
+                <span>Home</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

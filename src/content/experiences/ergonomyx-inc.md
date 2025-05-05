@@ -1,5 +1,5 @@
 ---
-title: Ergonomyx Inc.
+title: Ergonomyx Inc
 date: Sept 2019 - Aug 2020
 ---
 

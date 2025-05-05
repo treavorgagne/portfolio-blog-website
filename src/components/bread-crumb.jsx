@@ -27,7 +27,9 @@ export default function DynamicBreadcrumb() {
           {" "}
           {/* Correct key usage here */}
           <BreadcrumbLink asChild>
-            <Link href={href}>{label}</Link>
+            <Link href={href} className="text-lg">
+              {label}
+            </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         {i < segments.length - 1 && (
@@ -42,7 +44,9 @@ export default function DynamicBreadcrumb() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/">Treavor Gagne</Link>
+            <Link href="/" className="text-lg">
+              Treavor Gagne
+            </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         {segments.length > 0 && (

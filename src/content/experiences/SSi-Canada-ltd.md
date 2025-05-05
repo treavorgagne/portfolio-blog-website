@@ -1,5 +1,5 @@
 ---
-title: SSi Canada Ltd.
+title: SSi Canada Ltd
 date: Sept 2022 - Present
 ---
 

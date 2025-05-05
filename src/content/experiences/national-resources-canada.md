@@ -1,5 +1,5 @@
 ---
-title: National Resource Canada
+title: National Resources Canada
 start: May 2021 - Dec 2021
 ---
 
