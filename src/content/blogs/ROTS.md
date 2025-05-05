@@ -1,6 +1,11 @@
 ---
-title: Revenge of the Sith
-date: 2022-09-01
+title: Revenge of the Sith 20th Anniversary Release
+date: 2025-05-04
+tags: ["Star Wars", "ROTS", "Movies", "20th Anniversary", "Blog"]
 ---
 
-Revenge of the Sith 20th anniversery.
+Blog
+
+---
+
+_May the Force be with you._

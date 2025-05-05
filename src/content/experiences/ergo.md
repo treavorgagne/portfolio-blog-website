@@ -1,6 +1,6 @@
 ---
 title: Ergonomyx Inc.
-date: 2022-09-01
+date: Sept 2019 - Aug 2020
 ---
 
 My first coop.

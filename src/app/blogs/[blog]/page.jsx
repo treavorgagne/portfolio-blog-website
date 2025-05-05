@@ -1,26 +1,15 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { marked } from "marked";
 import { notFound } from "next/navigation";
-
+import getPostContent from "@/content/getContentMD";
+import path from "path";
 const contentDir = path.join(process.cwd(), "src/content/blogs");
-
-const getPostContent = (slug) => {
-  console.log(slug);
-  const fullPath = path.join(contentDir, `${slug}.md`);
-
-  if (!fs.existsSync(fullPath)) return null;
-
-  const fileContent = fs.readFileSync(fullPath, "utf8");
-  const { content, data } = matter(fileContent);
-  return { content, data };
-};
+import Markdown from "markdown-to-jsx";
 
 export default async function Blog({ params }) {
   const { blog } = await params;
-  const post = getPostContent(blog);
+  const post = getPostContent(contentDir, blog);
   if (!post) return notFound();
+  const html = marked(post.content);
 
   return (
     <>

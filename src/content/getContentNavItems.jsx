@@ -9,7 +9,7 @@ import matter from "gray-matter";
  * @param {string} contentDir - The directory to scan (relative to src/content)
  * @returns {Array} - Array of navigation items with title and url
  */
-export async function getContentNavItems(contentDir) {
+export default async function getContentNavItems(contentDir) {
   const contentPath = path.join(process.cwd(), "src/content", contentDir);
   const items = [
     {

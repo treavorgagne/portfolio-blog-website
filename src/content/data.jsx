@@ -8,7 +8,7 @@ import {
   Link,
   Mail,
 } from "lucide-react";
-import { getContentNavItems } from "./contentLoader";
+import getContentNavItems from "./getContentNavItems";
 
 // This function will generate the navigation data dynamically
 export async function generateNavigationData() {
@@ -16,8 +16,6 @@ export async function generateNavigationData() {
   const experienceItems = await getContentNavItems("./experiences");
   const projectItems = await getContentNavItems("./projects");
   const blogItems = await getContentNavItems("./blogs");
-
-  console.log(experienceItems, projectItems, blogItems);
 
   const data = [
     {
